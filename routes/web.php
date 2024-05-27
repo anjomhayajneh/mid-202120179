@@ -18,3 +18,18 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/homee', function () {
+    return view('home');
+});
+['auth','role'];
+Route::group([
+    "prefix"=> LaravelLocalization::setLocale()
+],function(){
+    Route::group([
+        'prefix'=>"dash"
+    ],function(){
+        Route::view('/dash', 'dashboard');
+        Route::view('/product','products.index');
+    });
+});
